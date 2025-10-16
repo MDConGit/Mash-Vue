@@ -1,0 +1,114 @@
+/* ---- Global dark theme (WCAG-friendly) ---- */
+:root {
+  /* Neutral palette */
+  --bg: #0a0a0a;           /* page background */
+  --text: #e8edf6;         /* primary text */
+  --muted: #a9b0bf;        /* secondary text */
+  --card: #171717;         /* panels/cards */
+  --border: #404040;       /* outlines/dividers */
+
+  /* Accents */
+  --primary: #14b8a6;      /* teal */
+  --primary-text: #ffffff; /* text on primary */
+  --secondary: #262626;    /* button/inputs background */
+  --danger: #dc2626;       /* destructive */
+  --danger-text: #ffffff;  /* text on danger */
+}
+
+/* Prefer dark form controls, improves native inputs */
+:root { color-scheme: dark; }
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body, #app { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100dvh;
+  display: block;
+}
+
+/* Generic elements */
+h1 { text-align: center; }
+h1, h2, h3 { color: var(--text); margin: 0.5rem 0 0.25rem; }
+small { color: var(--muted); }
+
+/* Cards/containers */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* Inputs */
+input, select, textarea {
+  background: var(--secondary);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  outline: none;
+}
+
+input::placeholder { color: var(--muted); }
+
+/* Buttons */
+button {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--text);
+  transition: transform 0.02s ease-in-out, filter 0.15s;
+}
+
+button.primary {
+  background: var(--primary);
+  border-color: transparent;
+  color: var(--primary-text);
+}
+
+button.secondary {
+  background: var(--secondary);
+  color: var(--text);
+}
+
+button.danger {
+  background: var(--danger);
+  border-color: transparent;
+  color: var(--danger-text);
+}
+
+button:active { transform: translateY(1px); }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Focus states (keyboard accessibility) */
+:where(button, input, select, textarea):focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--primary) 70%, white 0%);
+  outline-offset: 2px;
+}
+
+/* Details/summary */
+details {
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+}
+summary { cursor: pointer; color: var(--text); }
+
+/* Utility layout classes used by components */
+.container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
+.grid-gap { display: grid; gap: 1rem; }
+.border { border: 1px solid var(--border); border-radius: 8px; }
